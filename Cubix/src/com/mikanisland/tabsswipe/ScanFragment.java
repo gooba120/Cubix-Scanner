@@ -54,7 +54,8 @@ public class ScanFragment extends Fragment {
 	private BluetoothAdapter m_BT;
 	private BluetoothDevice arduino;
 	private BluetoothSocket btSocket;
-	private final byte BT_MAC_ADDR[] = {0x20, 0x13, 0x11, 0x14, 0x12, 0x9};
+//	private final byte BT_MAC_ADDR[] = {0x20, 0x13, 0x11, 0x14, 0x12, 0x9};
+	private final String BT_MAC_ADDR = "20:13:11:14:12:09";
 	private OutputStream out;
 	private InputStream in;
 	private byte buffer[] = new byte[10];
