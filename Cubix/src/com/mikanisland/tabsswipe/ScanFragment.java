@@ -31,7 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ScanFragment extends Fragment {
-	// ABCDEFG
+	// ABCDEF
 	private BaseLoaderCallback mOpenCVCallBack = new BaseLoaderCallback(getActivity()) {
 		@Override
 		public void onManagerConnected(int status) {
