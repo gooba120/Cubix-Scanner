@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+// hello
 
 public class UpdateBluetoothStatusTask extends AsyncTask<Void, Void, Integer> {
 	
