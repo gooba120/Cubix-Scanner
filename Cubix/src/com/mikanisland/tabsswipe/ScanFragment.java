@@ -59,7 +59,7 @@ public class ScanFragment extends Fragment {
 	private InputStream in;
 	private byte buffer[] = new byte[10];
 	private UpdateBluetoothStatusTask currTask;
-	//
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
