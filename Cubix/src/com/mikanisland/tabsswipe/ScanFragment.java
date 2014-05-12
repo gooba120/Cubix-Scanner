@@ -1,5 +1,6 @@
 package com.mikanisland.tabsswipe;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,8 +20,10 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +63,7 @@ public class ScanFragment extends Fragment {
 	private InputStream in;
 	private byte buffer[] = new byte[10];
 	private UpdateBluetoothStatusTask currTask;
+	private final int VID_CAP_REQUEST_CODE = 100;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,13 +92,28 @@ public class ScanFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				if(status.getText().toString().equals("Connected")) {
-					Intent intent = new Intent(getActivity(), VideoActivity.class);
-					startActivity(intent);
-				}
-				else
-					Toast.makeText(getActivity(), "Connect your Bluetooth!", Toast.LENGTH_SHORT).show();
+				// where to put recording intent
+				Intent videoCapture = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+//				File saveLocation = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() 
+//												+ File.separator + "sampleVid.mp4");
+//				Uri videoSave = Uri.fromFile(saveLocation);
+//				
+//				System.out.println(saveLocation.toString());
+//				
+//				videoCapture.putExtra(MediaStore.EXTRA_OUTPUT, videoSave);
+				videoCapture.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+				
+				startActivityForResult(videoCapture, VID_CAP_REQUEST_CODE);
+				
+//				if(status.getText().toString().equals("Connected")) {
+//					Intent intent = new Intent(getActivity(), VideoActivity.class);
+//					startActivity(intent);
+////				}
+//				else
+//					Toast.makeText(getActivity(), "Connect your Bluetooth!", Toast.LENGTH_SHORT).show();
 			}
+			
+			
 		});
         
         final Button refreshB = (Button)rootView.findViewById(R.id.refresh);
@@ -114,6 +133,14 @@ public class ScanFragment extends Fragment {
 		
 		return rootView;
 	}
+	
+	@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		System.out.println("Calling on activity for result");
+		if(requestCode == VID_CAP_REQUEST_CODE) {
+			System.out.println(data.getData().getPath());
+		}
+    }
 	
 	private void updateBTStatus(View rootView) {
 
