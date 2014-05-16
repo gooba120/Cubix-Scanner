@@ -71,11 +71,11 @@ public class ScanFragment extends Fragment {
 		
 		scanFrag = this;
 		
-		System.out.println("Trying to load OpenCV library");
-	    if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_2, getActivity(), mOpenCVCallBack))
-	    {
-	    	System.out.println("Cannot connect to OpenCV Manager");
-	    }
+//		System.out.println("Trying to load OpenCV library");
+//	    if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_2, getActivity(), mOpenCVCallBack))
+//	    {
+//	    	System.out.println("Cannot connect to OpenCV Manager");
+//	    }
 		
 		
 		final View rootView = inflater.inflate(R.layout.fragment_scan, container, false);
@@ -112,7 +112,6 @@ public class ScanFragment extends Fragment {
 //				else
 //					Toast.makeText(getActivity(), "Connect your Bluetooth!", Toast.LENGTH_SHORT).show();
 			}
-			
 			
 		});
         
