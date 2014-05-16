@@ -101,7 +101,7 @@ public class ScanFragment extends Fragment {
 //				System.out.println(saveLocation.toString());
 //				
 //				videoCapture.putExtra(MediaStore.EXTRA_OUTPUT, videoSave);
-				videoCapture.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+				videoCapture.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1); 
 				
 				startActivityForResult(videoCapture, VID_CAP_REQUEST_CODE);
 				
