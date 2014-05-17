@@ -1,5 +1,7 @@
 package com.mikanisland.opengl;
 
+import java.io.InputStream;
+
 import com.mikanisland.cubix.R;
 
 import android.app.Activity;

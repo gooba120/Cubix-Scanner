@@ -1,5 +1,6 @@
 package com.mikanisland.opengl;
 
+import java.io.InputStream;
 import java.util.Arrays;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -9,7 +10,6 @@ import android.content.Context;
 import android.opengl.Matrix;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
-
 import static android.opengl.GLES20.*;
 
 public class VisualizationRenderer implements GLSurfaceView.Renderer {
@@ -22,8 +22,15 @@ public class VisualizationRenderer implements GLSurfaceView.Renderer {
 	private float center;
 	private float newCenter;
 	
-	public VisualizationRenderer(Context ctx) {
+	public VisualizationRenderer(Context ctx, InputStream objLoadStream) {
 		context = ctx;
+		
+		try {
+			object = ObjectLoader.load(objLoadStream);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private float angle = 0;
@@ -57,7 +64,8 @@ public class VisualizationRenderer implements GLSurfaceView.Renderer {
 		gestureRotate(0.4f, 0, 0.4f);
 		gestureRotate(0, 0.4f, 0.4f);
 		
-		object = new Object3D();
+		// object should be created in constructor
+		// object = new Object3D();
 		
 		createCube();
 	}

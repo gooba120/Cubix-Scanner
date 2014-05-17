@@ -19,6 +19,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -93,15 +94,20 @@ public class ScanFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// where to put recording intent
+				
 				Intent videoCapture = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-//				File saveLocation = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() 
+//				File saveLocation = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath());
 //												+ File.separator + "sampleVid.mp4");
 //				Uri videoSave = Uri.fromFile(saveLocation);
-//				
+				
 //				System.out.println(saveLocation.toString());
-//				
+				
 //				videoCapture.putExtra(MediaStore.EXTRA_OUTPUT, videoSave);
-				videoCapture.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1); 
+//				videoCapture.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1); 
+				
+//				Uri uri = Uri.parse("content://media/external/video/media");
+//				Cursor c = MediaStore.Video.query(uri, proj, null, null, null);
+//				c.moveToLast();
 				
 				startActivityForResult(videoCapture, VID_CAP_REQUEST_CODE);
 				
