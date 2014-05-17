@@ -67,7 +67,8 @@ public class VisualizationRenderer implements GLSurfaceView.Renderer {
 		// object should be created in constructor
 		// object = new Object3D();
 		
-		createCube();
+//		createCube();
+		object.updateBuffer();
 	}
 	
 	private void createCube() {

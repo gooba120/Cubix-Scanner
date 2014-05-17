@@ -21,12 +21,12 @@ public class VisualizationSurface extends GLSurfaceView {
 		InputStream input = null;
 		
 		try {
-			input = new FileInputStream(new File(Environment.getExternalStorageDirectory(), "sample"));
+			input = new FileInputStream(new File(Environment.getExternalStorageDirectory(), "bundle.out"));
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-			
+		
 		setRenderer(renderer = new VisualizationRenderer(ctx, input));
 		setRenderMode(RENDERMODE_CONTINUOUSLY);
 	}
